@@ -6,8 +6,8 @@
     </head>
     <body>
         <script>
-            var pictureArray = [];
-            var i = 0;
+            let pictureArray = [];
+            let i = 0;
             function getRandomInt(max){
                 return Math.floor(Math.random() * max);
             };
@@ -17,7 +17,7 @@
                 pictureArray[i] = '<img src =' + 'https://randomfox.ca//images//'+ getRandomInt(124) + '.jpg />';
                 console.log(pictureArray[i])
                 return printPicture();
-            }
+            };
         </script>
         <div>
             <script>
