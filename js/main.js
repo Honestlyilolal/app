@@ -1,33 +1,40 @@
-const isEventExist = listeners => event => listeners.has(event);
-
-const createSignal = () => {
-  const listeners = new Map();
-
-  const isCorrectEvent = isEventExist(listeners);
-
-  const on = (event, callBack) => {
-    if (!isCorrectEvent(event)) {
-      listeners.set(event, []);
-    }
-    listeners.get(event).push(callBack);
-  };
-
-  const off = event => {
-    listeners.delete(event);
-  };
-
-  const emit = (event, ...args) => {
-    if (isCorrectEvent(event)) {
-      listeners.get(event).forEach(callBack => {
-        callBack(...args);
-      });
-    }
-  };
-  return { on, off, emit };
+let pictureArray = [];
+let i = 0;
+function getRandomInt(max){
+  return Math.floor(Math.random() * max);
 };
 
-const signals = createSignal();
-signals.on('dog', () => console.log('gav gav'))
 
-signals.on('dog', () => console.log('now wolf'))
-console.log(signals.emit('dog'))
+function deleteButton(){
+  const element_1 = document.getElementById("button_next");
+  element_1.remove();
+  pictureArray[i] = '<img src =' + 'https://randomfox.ca//images//'+ getRandomInt(124) + '.jpg />';
+  console.log(pictureArray[i])
+  return printPicture();
+};
+
+function printPicture(){
+              document.write(
+                  '<div id = "picture">' +
+                  pictureArray[i] +
+                  '</div>'
+              );
+              ++i;
+              return deletePicture();
+          };
+
+          function deletePicture(){
+            const element_2 = document.getElementById("picture");
+            if(i > 1){
+                element_2.remove();
+            }
+            return callButton();
+        };
+
+        function callButton(){
+            document.write(
+                '<p id = "button_next">' +
+                '<button onclick = "deleteButton()"> Next </button>' +
+                '</p>'
+            );
+        };
